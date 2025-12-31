@@ -18,6 +18,15 @@ class User {
             ':password' => password_hash($password, PASSWORD_DEFAULT)
         ]);
     }
+    public function findByEmail($email) 
+    {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':email' => $email]);
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
     
 
