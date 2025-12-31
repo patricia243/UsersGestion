@@ -16,7 +16,14 @@ class Router
                 require_once "../app/controllers/AuthController.php";
                 (new AuthController())->register();
                 break;
-          
+                case 'logout':
+                require_once "../app/controllers/AuthController.php";
+                (new AuthController())->logout();
+                break;
+            case 'dashboard':
+                require_once "../app/controllers/DashboardController.php";
+                (new HomeController())->index();
+                break;
             default:
                 echo "404 Not Found";
                 break;
