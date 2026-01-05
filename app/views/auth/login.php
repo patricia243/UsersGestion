@@ -1,234 +1,102 @@
-<?php
-// Ici vous pouvez mettre votre logique PHP si nécessaire
-?>
-
-<?php
-// login.php avec validation
-session_start();
-
-$errors = [];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-    
-    // Validation simple
-    if (empty($email)) {
-        $errors[] = 'Email is required';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Invalid email format';
-    }
-    
-    if (empty($password)) {
-        $errors[] = 'Password is required';
-    }
-    
-    // Si pas d'erreurs, vérifier les identifiants
-    if (empty($errors)) {
-        // Ici, vous vérifieriez dans la base de données
-        // Exemple : $user = $userModel->authenticate($email, $password);
-        
-        // Pour l'exemple, on simule une connexion réussie
-        if ($email === 'test@example.com' && $password === 'password') {
-            $_SESSION['user'] = ['email' => $email];
-            header('Location: index.php?url=dashboard');
-            exit();
-        } else {
-            $errors[] = 'Invalid email or password';
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Connexion</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            min-height: 100vh;
+            margin: 0;
         }
         
-        .login-card {
+        .login-container {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             width: 100%;
             max-width: 400px;
-            overflow: hidden;
         }
         
-        .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
+        h2 {
             text-align: center;
+            color: #333;
+            margin-bottom: 30px;
         }
         
-        .card-header h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        .card-header p {
-            opacity: 0.9;
-        }
-        
-        .card-body {
-            padding: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .input-with-icon {
-            position: relative;
-        }
-        
-        .input-with-icon i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #667eea;
-        }
-        
-        .input-with-icon input {
+        input {
             width: 100%;
-            padding: 15px 15px 15px 45px;
-            border: 2px solid #e1e5ee;
-            border-radius: 10px;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             font-size: 16px;
-            transition: all 0.3s;
         }
         
-        .input-with-icon input:focus {
-            border-color: #667eea;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-        
-        .btn-login {
+        button {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 14px;
+            background: #007bff;
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
             font-size: 16px;
-            font-weight: 600;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s;
+            margin-top: 10px;
         }
         
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        button:hover {
+            background: #0056b3;
         }
         
-        .card-footer {
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .register-link {
             text-align: center;
-            padding: 20px;
-            border-top: 1px solid #eee;
+            margin-top: 20px;
         }
         
-        .card-footer a {
-            color: #667eea;
+        .register-link a {
+            color: #007bff;
             text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .alert {
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .alert-error {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.2);
         }
     </style>
 </head>
 <body>
-    <div class="login-card">
-        <div class="card-header">
-            <h2>Welcome Back</h2>
-            <p>Sign in to your account</p>
-        </div>
+    <div class="login-container">
+        <h2>Connexion</h2>
         
-        <div class="card-body">
-            <?php if (!empty($errors)): ?>
-                <div class="alert alert-error">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <?php echo htmlspecialchars(implode('. ', $errors)); ?>
-                </div>
-            <?php endif; ?>
-            
-            <form method="POST" action="">
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" 
-                               name="email" 
-                               placeholder="Email Address" 
-                               required
-                               value="<?php echo htmlspecialchars($email ?? ''); ?>">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" 
-                               name="password" 
-                               placeholder="Password" 
-                               required>
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn-login">
-                    <i class="fas fa-sign-in-alt"></i> Sign In
-                </button>
-            </form>
-        </div>
+        <?php if (isset($error) && $error): ?>
+            <div class="error"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
         
-        <div class="card-footer">
-            <a href="index.php?url=register">
-                <i class="fas fa-user-plus"></i>
-                <span>Create new account</span>
-            </a>
+        <?php if (isset($success) && $success): ?>
+            <div style="color: green; background: #d4edda; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                <?php echo htmlspecialchars($success); ?>
+            </div>
+        <?php endif; ?>
+        
+        <form method="POST" action="index.php?url=auth/login">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+        
+        <div class="register-link">
+            <p>Pas encore de compte? <a href="index.php?url=auth/register">S'inscrire</a></p>
         </div>
     </div>
 </body>
 </html>
-
-
-
-<?php
-// Autre code PHP si nécessaire
-?>
