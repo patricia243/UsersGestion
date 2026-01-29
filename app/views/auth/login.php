@@ -1,102 +1,48 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-        
-        .login-container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-        
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
-        
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        
-        button {
-            width: 100%;
-            padding: 14px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        
-        button:hover {
-            background: #0056b3;
-        }
-        
-        .error {
-            color: #dc3545;
-            background: #f8d7da;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-        
-        .register-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .register-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="login-container">
-        <h2>Connexion</h2>
+<?php 
+$page_title = 'Connexion - User Manager'; 
+?>
+
+<div class="auth-container">
+    <div class="form-box">
+        <h2 class="text-center mb-4">🔐 Connexion</h2>
         
         <?php if (isset($error) && $error): ?>
-            <div class="error"><?php echo htmlspecialchars($error); ?></div>
-        <?php endif; ?>
-        
-        <?php if (isset($success) && $success): ?>
-            <div style="color: green; background: #d4edda; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
-                <?php echo htmlspecialchars($success); ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Erreur!</strong> <?php echo htmlspecialchars($error); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         <?php endif; ?>
         
-        <form method="POST" action="index.php?url=auth/login">
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Mot de passe" required>
-            <button type="submit">Se connecter</button>
+        <?php if (isset($success) && $success): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Succès!</strong> <?php echo htmlspecialchars($success); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php endif; ?>
+        
+        <form method="POST" action="index.php?url=auth/login" novalidate>
+            <div class="mb-3">
+                <label for="email" class="form-label">Adresse e-mail</label>
+                <input type="email" class="form-control" id="email" name="email" 
+                       placeholder="exemple@email.com" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" 
+                       placeholder="Votre mot de passe" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 mb-3">Se connecter</button>
         </form>
         
-        <div class="register-link">
-            <p>Pas encore de compte? <a href="index.php?url=auth/register">S'inscrire</a></p>
+        <hr>
+        
+        <div class="text-center">
+            <p class="text-muted">Pas encore de compte?</p>
+            <a href="index.php?url=auth/register" class="btn btn-outline-primary w-100">
+                S'inscrire maintenant
+            </a>
         </div>
     </div>
-</body>
-</html>
+</div>

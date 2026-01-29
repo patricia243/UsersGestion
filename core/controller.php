@@ -8,13 +8,19 @@ class Controller
         
         // Chemin vers la vue
         $viewFile = "../app/views/{$view}.php";
+        $headerFile = "../app/views/layouts/header.php";
+        $footerFile = "../app/views/layouts/footer.php";
         
         // Si le fichier n'existe pas, le créer automatiquement
         if (!file_exists($viewFile)) {
             $this->createViewFile($view, $viewFile);
         }
         
-        // Vérifier à nouveau
+        // Vérifier à nouveau et inclure header + vue + footer si disponibles
+        if (file_exists($headerFile)) {
+            require_once $headerFile;
+        }
+
         if (file_exists($viewFile)) {
             require_once $viewFile;
         } else {
@@ -22,6 +28,10 @@ class Controller
             echo "<h1>Vue non trouvée: {$view}</h1>";
             echo "<p>Le fichier {$viewFile} n'existe pas.</p>";
             echo "<p>Créez-le manuellement ou vérifiez le chemin.</p>";
+        }
+
+        if (file_exists($footerFile)) {
+            require_once $footerFile;
         }
     }
     

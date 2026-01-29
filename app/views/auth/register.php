@@ -1,116 +1,56 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-        
-        .register-container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-        
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-        }
-        
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        
-        button {
-            width: 100%;
-            padding: 14px;
-            background: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        
-        button:hover {
-            background: #218838;
-        }
-        
-        .error {
-            color: #dc3545;
-            background: #f8d7da;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-        
-        .login-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .login-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="register-container">
-        <h2>Inscription</h2>
+<?php 
+$page_title = 'Inscription - User Manager'; 
+?>
+
+<div class="auth-container">
+    <div class="form-box">
+        <h2 class="text-center mb-4">📝 Inscription</h2>
         
         <?php if (isset($error) && $error): ?>
-            <div class="error"><?php echo htmlspecialchars($error); ?></div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Erreur!</strong> <?php echo htmlspecialchars($error); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
         <?php endif; ?>
         
-        <form method="POST" action="index.php?url=auth/register">
-            <input type="text" 
-                   name="name" 
-                   placeholder="Nom complet" 
-                   required
-                   value="<?php echo isset($old['name']) ? htmlspecialchars($old['name']) : ''; ?>">
+        <form method="POST" action="index.php?url=auth/register" novalidate>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nom complet</label>
+                <input type="text" class="form-control" id="name" name="name" 
+                       placeholder="Jean Dupont" required
+                       value="<?php echo isset($old['name']) ? htmlspecialchars($old['name']) : ''; ?>">
+            </div>
             
-            <input type="email" 
-                   name="email" 
-                   placeholder="Email" 
-                   required
-                   value="<?php echo isset($old['email']) ? htmlspecialchars($old['email']) : ''; ?>">
+            <div class="mb-3">
+                <label for="email" class="form-label">Adresse e-mail</label>
+                <input type="email" class="form-control" id="email" name="email" 
+                       placeholder="exemple@email.com" required
+                       value="<?php echo isset($old['email']) ? htmlspecialchars($old['email']) : ''; ?>">
+            </div>
             
-            <input type="password" 
-                   name="password" 
-                   placeholder="Mot de passe (min. 6 caractères)" 
-                   required>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" 
+                       placeholder="Min. 6 caractères" required>
+                <small class="form-text text-muted">Minimum 6 caractères</small>
+            </div>
             
-            <input type="password" 
-                   name="confirm_password" 
-                   placeholder="Confirmer le mot de passe" 
-                   required>
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirmer le mot de passe</label>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" 
+                       placeholder="Confirmez votre mot de passe" required>
+            </div>
             
-            <button type="submit">S'inscrire</button>
+            <button type="submit" class="btn btn-success w-100 mb-3">S'inscrire</button>
         </form>
         
-        <div class="login-link">
-            <p>Déjà un compte? <a href="index.php?url=auth/login">Se connecter</a></p>
+        <hr>
+        
+        <div class="text-center">
+            <p class="text-muted">Déjà un compte?</p>
+            <a href="index.php?url=auth/login" class="btn btn-outline-primary w-100">
+                Se connecter
+            </a>
         </div>
     </div>
-</body>
-</html>
+</div>
