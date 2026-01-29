@@ -1,5 +1,4 @@
 <?php
-$page_title = 'Accueil - User Manager';
 ?>
 
 
@@ -31,4 +30,63 @@ $page_title = 'Accueil - User Manager';
 
 
 
-</div>    </div>        </div>            </div>                <p class="card-text">Interface claire, responsive et conçue pour une bonne expérience utilisateur.</p>                <h5 class="card-title">Ergonomie</h5>            <div class="card-body">        <div class="card mb-3">    <div class="col-md-6">    </div>        </div>            </div>                <p class="card-text">Authentification simple et sécurisée pour protéger l'accès aux données.</p>                <h5 class="card-title">Sécurité</h5>            <div class="card-body">        <div class="card mb-3">    <div class="col-md-6"><div class="row mt-5"></div>    </div>        <a href="index.php?url=auth/login" class="btn btn-primary">Se connecter</a>        <a href="index.php?url=auth/register" class="btn btn-success me-2">Créer un compte</a>    <div class="d-flex justify-content-center mt-4">    <p class="lead text-muted">Gérez facilement vos utilisateurs — inscrivez-vous ou connectez-vous pour accéder à votre espace.</p>    <h1 class="display-5">Bienvenue sur User Manager</h1><div class="py-5 text-center">?>$page_title = 'Accueil - User Manager';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>    </div>        </div>            </div>                </div>                    </a>                        🔑 Se connecter                    <a href="index.php?url=auth/login" class="btn btn-primary btn-lg w-100">                    <p class="text-muted mb-3">Connectez-vous pour accéder à votre espace</p>                    <h5 class="mb-3">Vous avez déjà un compte ?</h5>                <div class="p-4 bg-white rounded">            <div class="col-md-6 mb-3">                        </div>                </div>                    </a>                        ➕ S'inscrire                    <a href="index.php?url=auth/register" class="btn btn-success btn-lg w-100">                    <p class="text-muted mb-3">Créez votre compte en quelques secondes</p>                    <h5 class="mb-3">Nouveau chez nous ?</h5>                <div class="p-4 bg-white rounded">            <div class="col-md-6 mb-3">        <div class="row">                <h2 class="mb-4 fw-bold">Prêt à commencer ?</h2>    <div class="container text-center"><section class="py-5 bg-light"><!-- Section CTA --></section>    </div>        </div>            </div>                </div>                    </div>                        <p class="card-text text-muted">Connexion instantanée et gestion simplifiée de votre profil utilisateur.</p>                        <h5 class="card-title fw-bold">Rapide</h5>                        <div style="font-size: 48px; margin-bottom: 15px;">⚡</div>                    <div class="card-body p-4">                <div class="card h-100 border-0 shadow-sm text-center">            <div class="col-md-4">                        </div>                </div>                    </div>                        <p class="card-text text-muted">Interface intuitive et moderne, accessible sur tous les appareils.</p>                        <h5 class="card-title fw-bold">Ergonomique</h5>                        <div style="font-size: 48px; margin-bottom: 15px;">✨</div>                    <div class="card-body p-4">                <div class="card h-100 border-0 shadow-sm text-center">            <div class="col-md-4">                        </div>                </div>                    </div>                        <p class="card-text text-muted">Authentification fiable pour protéger vos données et votre confidentialité.</p>                        <h5 class="card-title fw-bold">Sécurisé</h5>                        <div style="font-size: 48px; margin-bottom: 15px;">🔒</div>                    <div class="card-body p-4">                <div class="card h-100 border-0 shadow-sm text-center">            <div class="col-md-4">        <div class="row g-4">                <h2 class="text-center mb-5 fw-bold">Pourquoi choisir User Manager ?</h2>    <div class="container"><section class="py-5"><!-- Section Avantages --></section>    </div>        </div>            </a>                🔑 Se connecter            <a href="index.php?url=auth/login" class="btn btn-outline-light btn-lg fw-bold px-5">            </a>                ➕ Créer un compte            <a href="index.php?url=auth/register" class="btn btn-light btn-lg fw-bold px-5">        <div class="d-flex justify-content-center gap-3 flex-wrap">                <p class="lead fs-5 mb-4">Bienvenue ! Gérez facilement vos utilisateurs<br>et accédez à votre espace personnel sécurisé.</p>        <h1 class="display-4 fw-bold mb-3">🔐 User Manager</h1>    <div class="container text-center"><section class="py-5" style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white; margin: -40px 0 40px -50vw; padding: 80px 50vw 80px 50vw;"><!-- Section Héro -->?>$page_title = 'Accueil - User Manager';

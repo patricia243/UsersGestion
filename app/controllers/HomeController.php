@@ -5,10 +5,8 @@ class HomeController extends Controller
 {
     public function dashboard()
     {
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: index.php?url=auth/login');
-            exit();
-        }
+        // Afficher le dashboard (page d'accueil)
+        // Contenu différent selon l'état de connexion
         $this->view("home/dashboard");
     }
 

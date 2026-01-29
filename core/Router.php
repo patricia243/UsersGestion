@@ -1,8 +1,8 @@
 <?php
 class Router {
     public function run() {
-        // URL par défaut -> page d'accueil publique
-        $url = $_GET['url'] ?? 'home/index';
+        // URL par défaut -> dashboard comme page principale
+        $url = $_GET['url'] ?? 'home/dashboard';
         
         // Nettoyer l'URL
         $url = trim($url, '/');

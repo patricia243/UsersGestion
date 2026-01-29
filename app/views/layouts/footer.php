@@ -1,47 +1,37 @@
-<?php
-?>
         </div>
     </main>
     
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <h6>À propos</h6>
-                    <p>Application de gestion des utilisateurs avec authentification sécurisée.</p>
+    <footer class="bg-gray-900 text-white mt-auto border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h6 class="text-lg font-bold mb-3">À propos</h6>
+                    <p class="text-gray-400">Application de gestion des utilisateurs avec authentification sécurisée.</p>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <h6>Liens rapides</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="/Users/public/?url=auth/login" class="text-white-50 text-decoration-none">Connexion</a></li>
-                        <li><a href="/Users/public/?url=auth/register" class="text-white-50 text-decoration-none">Inscription</a></li>
+                <div>
+                    <h6 class="text-lg font-bold mb-3">Liens rapides</h6>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/Users/public/?url=auth/login" class="hover:text-white transition">🔑 Connexion</a></li>
+                        <li><a href="/Users/public/?url=auth/register" class="hover:text-white transition">➕ Inscription</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 mb-3">
-                    <h6>Contact</h6>
-                    <p class="text-white-50">Email: contact@example.com</p>
+                <div>
+                    <h6 class="text-lg font-bold mb-3">Contact</h6>
+                    <p class="text-gray-400">Email: contact@example.com</p>
                 </div>
             </div>
-            <hr class="bg-secondary">
-            <div class="text-center text-white-50">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
                 <p>&copy; 2026 User Manager. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
     
-    <!-- JS Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- JS Custom -->
+    <!-- Mobile Menu Script -->
     <script>
-        // Auto-close alerts après 5 secondes
-        document.querySelectorAll('.alert').forEach(alert => {
-            if (!alert.querySelector('.alert-danger')) {
-                setTimeout(() => {
-                    alert.style.display = 'none';
-                }, 5000);
-            }
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         });
     </script>
 </body>
