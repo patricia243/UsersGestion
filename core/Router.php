@@ -1,8 +1,8 @@
 <?php
 class Router {
     public function run() {
-        // URL par défaut
-        $url = $_GET['url'] ?? 'auth/login';
+        // URL par défaut -> page d'accueil publique
+        $url = $_GET['url'] ?? 'home/index';
         
         // Nettoyer l'URL
         $url = trim($url, '/');

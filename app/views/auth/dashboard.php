@@ -1,4 +1,5 @@
-<?php if (isset($user) && $user): ?>
+<?php
+ if (isset($user) && $user): ?>
                     <h1>Dashboard de <?php echo htmlspecialchars($user["email"]); ?></h1>
                     <p>Bienvenue sur votre tableau de bord.</p>
                     <a href="index.php?url=auth/logout">Déconnexion</a>
